@@ -5,19 +5,27 @@ import { NavLink } from "react-router-dom";
 
 const NavBar: React.FC = () => {
   return (
-    <Menu fixed='top' inverted>
-      <Container style={{ textAlign: "right" }}>
+    <Menu size='large' fixed='top' inverted style={{ alignContent: "center" }}>
+      <Container>
         <Menu.Item header as={NavLink} exact to='/'>
+          <img src='/assets/logo.png' alt='logo' style={{ maxWidth: "3em" }} />
           Reactivities
-          <img src='/assets/logo_sm.png' alt='logo' />
         </Menu.Item>
-        <Menu.Item name='Activities' as={NavLink} to='/activities' />
-        <Menu.Item>
+        <Menu.Item position='right'>
+          <Button
+            content='Activities'
+            as={NavLink}
+            to='/activities'
+            color='facebook'
+            size='massive'
+            style={{ marginTop: "1em", marginRight: "1em", padding: "1em" }}
+          />
           <Button
             positive
             content='Create Activity'
             as={NavLink}
             to='/createActivity'
+            style={{ marginTop: "1em", marginRight: "1em", padding: "1em" }}
           />
         </Menu.Item>
       </Container>
