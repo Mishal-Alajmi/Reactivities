@@ -8,8 +8,13 @@ const NavBar: React.FC = () => {
     <Menu size='large' fixed='top' inverted style={{ alignContent: "center" }}>
       <Container>
         <Menu.Item header as={NavLink} exact to='/'>
-          <img src='/assets/logo.png' alt='logo' style={{ maxWidth: "3em" }} />
-          Reactivities
+          <img
+            src='/assets/logo.png'
+            alt='logo'
+            style={{
+              maxWidth: "3em",
+            }}
+          />
         </Menu.Item>
         <Menu.Item position='right'>
           <Button
@@ -18,14 +23,14 @@ const NavBar: React.FC = () => {
             to='/activities'
             color='facebook'
             size='massive'
-            style={{ marginTop: "1em", marginRight: "1em", padding: "1em" }}
+            style={{ marginTop: "0.4em", marginRight: "1em", padding: "1em" }}
           />
           <Button
             positive
             content='Create Activity'
             as={NavLink}
             to='/createActivity'
-            style={{ marginTop: "1em", marginRight: "1em", padding: "1em" }}
+            style={{ marginTop: "0.4em", marginRight: "1em", padding: "1em" }}
           />
         </Menu.Item>
       </Container>

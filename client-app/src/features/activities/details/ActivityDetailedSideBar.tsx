@@ -18,7 +18,7 @@ const ActivityDetailedSideBar = () => {
         <List relaxed divided>
           <Item style={{ position: "relative" }}>
             <Label
-              style={{ position: "absolute" }}
+              style={{ position: "absolute", marginBottom: "8em" }}
               color='orange'
               ribbon='right'>
               Host
