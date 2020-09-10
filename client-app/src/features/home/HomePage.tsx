@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <Segment inverted textAlign='center' vertical className='masthead'>
+    <Segment
+      inverted
+      textAlign='center'
+      vertical
+      className='masthead'
+      style={{ margin: "0", padding: "0" }}>
       <Container text>
         <Header as='h1' inverted>
           <Image
