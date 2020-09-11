@@ -2,6 +2,8 @@ import { observable, action, computed, configure, runInAction } from "mobx";
 import { createContext, SyntheticEvent } from "react";
 import { IActivity } from "../models/activity";
 import agent from "../../api/agent";
+import { history } from "../..";
+import { toast } from "react-toastify";
 
 // Enable MobX strict Mode
 configure({ enforceActions: "always" });
@@ -66,6 +68,7 @@ class ActivityStore {
     let activity = this.getActivity(id);
     if (activity) {
       this.activity = activity;
+      return activity;
     } else {
       this.loadingInitial = true;
       try {
@@ -73,8 +76,10 @@ class ActivityStore {
         runInAction("Getting Activity", () => {
           activity.date = new Date(activity.date);
           this.activity = activity;
+          this.activityRegistery.set(activity.id, activity);
           this.loadingInitial = false;
         });
+        return activity;
       } catch (error) {
         runInAction("Getting Activity error", () => {
           this.loadingInitial = false;
@@ -92,8 +97,10 @@ class ActivityStore {
         this.activityRegistery.set(activity.id, activity);
         this.submitting = false;
       });
+      history.push(`/activities/${activity.id}`);
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
+      toast.error("One or more fields are missing!");
       runInAction("Creating an activity error", () => {
         this.submitting = false;
       });
@@ -109,8 +116,11 @@ class ActivityStore {
         this.activity = activity;
         this.submitting = false;
       });
+      history.push(`/activities/${activity.id}`);
     } catch (error) {
       console.log(error);
+      toast.error("One or more fields are missing!");
+
       runInAction("Editing an activity error", () => {
         this.submitting = false;
       });
